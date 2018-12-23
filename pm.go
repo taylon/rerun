@@ -39,10 +39,10 @@ func (pm *processManager) run() {
 	if pm.conf.Test {
 		testOut, testErr := exec.Command("go", "test", "./...").CombinedOutput()
 		if testErr != nil {
-			CPrint("TESTS", aurora.RedFg, "Tests failed!")
+			CPrint("TESTS", aurora.RedFg, aurora.Red("Tests failed!").String())
 			fmt.Printf("==========\n%s==========\n", testOut)
 		} else {
-			CPrint("TESTS", aurora.GreenFg, "Pass!")
+			CPrint("TESTS", aurora.GreenFg, aurora.Green("Pass!").String())
 		}
 	}
 
