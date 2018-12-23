@@ -6,7 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"gopkg.in/fsnotify.v1"
+	"github.com/logrusorgru/aurora"
+	fsnotify "gopkg.in/fsnotify.v1"
 )
 
 type watcher struct {
@@ -90,7 +91,8 @@ func (w *watcher) processFileEvents() {
 					w.throttleEvents()
 
 					logger.Debugf("reloading due to change in file: %s", ev.Name)
-					logger.Info("change detected, reloading...")
+					CPrint("INFO", aurora.BrownFg, "Changes detected, reloading...")
+
 					w.pm.stop()
 					w.pm.run()
 				}
@@ -148,7 +150,7 @@ func (w *watcher) start() {
 	}
 
 	w.pm.run()
-	logger.Info("rerun started. watching for changes...")
+	CPrint("INFO", aurora.BrownFg, "rerun started. Watching for changes...")
 
 	<-w.exit
 }

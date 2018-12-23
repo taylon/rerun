@@ -10,6 +10,8 @@ github.com/ivpusic/go-clicolor v0.0.0-20150828210804-23f0b77f328a h1:C719vWPNIn8
 github.com/ivpusic/go-clicolor v0.0.0-20150828210804-23f0b77f328a/go.mod h1:0SFPvHdCWDlfm+uc7SYrZ30bF1sH1O1iEzBkvscKVqg=
 github.com/ivpusic/golog v0.0.0-20170608213328-28640bee649f h1:FaZoTHC/do/ABnS4SLlgmILuimaaiSDcqBdGc13xJFA=
 github.com/ivpusic/golog v0.0.0-20170608213328-28640bee649f/go.mod h1:EjZtQ4YORF5NXI9IZ+zcbIye4yhMFEwZjn1B0GeH88Q=
+github.com/logrusorgru/aurora v0.0.0-20181002194514-a7b3b318ed4e h1:9MlwzLdW7QSDrhDjFlsEYmxpFyIoXmYRon3dt0io31k=
+github.com/logrusorgru/aurora v0.0.0-20181002194514-a7b3b318ed4e/go.mod h1:7rIyQOR62GCctdiQpZ/zOJlFyk6y+94wXzv6RNZgaR4=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/shiena/ansicolor v0.0.0-20151119151921-a422bbe96644 h1:X+yvsM2yrEktyI+b2qND5gpH8YhURn0k8OCaeRnkINo=

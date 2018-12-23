@@ -7,6 +7,7 @@ require (
 	github.com/fsnotify/fsnotify v1.4.7 // indirect
 	github.com/ivpusic/go-clicolor v0.0.0-20150828210804-23f0b77f328a // indirect
 	github.com/ivpusic/golog v0.0.0-20170608213328-28640bee649f
+	github.com/logrusorgru/aurora v0.0.0-20181002194514-a7b3b318ed4e
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/shiena/ansicolor v0.0.0-20151119151921-a422bbe96644 // indirect
 	github.com/stretchr/testify v1.2.2

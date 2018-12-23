@@ -5,6 +5,8 @@ import (
 	"os"
 	"os/exec"
 	"time"
+
+	"github.com/logrusorgru/aurora"
 )
 
 type processManager struct {
@@ -18,28 +20,29 @@ func (pm *processManager) formatBuildTime(duration time.Duration) string {
 
 func (pm *processManager) run() {
 	logger.Debug("building application...")
+	// CPrint("BUILD", aurora.BlueFg, "building application...")
 
-	start := time.Now()
+	// start := time.Now()
 
 	os.Remove(pm.conf.build)
 	out, err := exec.Command("go", "build", "-o", pm.conf.build).CombinedOutput()
 
 	if err != nil {
-		logger.Errorf("build failed! %s", err.Error())
+		logger.Errorf("build failed: %s", err.Error())
 		fmt.Printf("%s", out)
 		return
 	}
 
 	// build success, display build time
-	logger.Infof("build took %s", pm.formatBuildTime(time.Since(start)))
+	// logger.Infof("build took %s", pm.formatBuildTime(time.Since(start)))
 
 	if pm.conf.Test {
-		testOut, testErr := exec.Command("go", "test").CombinedOutput()
+		testOut, testErr := exec.Command("go", "test", "./...").CombinedOutput()
 		if testErr != nil {
-			logger.Error("Tests failed!")
+			CPrint("TESTS", aurora.RedFg, "Tests failed!")
 			fmt.Printf("==========\n%s==========\n", testOut)
 		} else {
-			logger.Info("Tests OK!")
+			CPrint("TESTS", aurora.GreenFg, "Pass!")
 		}
 	}
 
