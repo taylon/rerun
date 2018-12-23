@@ -1,9 +1,11 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"os"
 	"os/exec"
+	"strings"
 	"time"
 
 	"github.com/logrusorgru/aurora"
@@ -38,9 +40,22 @@ func (pm *processManager) run() {
 
 	if pm.conf.Test {
 		testOut, testErr := exec.Command("go", "test", "./...").CombinedOutput()
+
 		if testErr != nil {
-			CPrint("TESTS", aurora.RedFg, aurora.Red("Tests failed!").String())
-			fmt.Printf("==========\n%s==========\n", testOut)
+			CPrint("TESTS", aurora.RedFg, aurora.Red("Failed!").String())
+
+			separator := aurora.Bold(aurora.Red("==========================="))
+			fmt.Println(separator)
+
+			scanner := bufio.NewScanner(strings.NewReader(string(testOut)))
+			for scanner.Scan() {
+				line := scanner.Text()
+				if !strings.HasPrefix(line, "?") && !strings.HasPrefix(line, "ok") {
+					fmt.Println(line)
+				}
+			}
+
+			fmt.Println(separator)
 		} else {
 			CPrint("TESTS", aurora.GreenFg, aurora.Green("Pass!").String())
 		}
